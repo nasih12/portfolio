@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN.md — "Lembar Gambar Teknik" (arah E, portofolio nasih12)
+   Motif identitas: bingkai lembar, garis dimensi, title block.
+   Palet inti: kertas gading + grafit;1 aksen: merah dimensi.
+   Dials: ENERGY2 · RHYTHM3 · MOTION2 (reveal sekali, tanpa loop).
+   ============================================================ */
+
+:root {
+  --paper: #faf8f2;      /* kertas gading — alas semua halaman */
+  --paper-2: #f3efe4;    /* panel/rata beda tipis */
+  --graphite: #2b2b2b;   /* tinta grafit — teks utama & garis */
+  --graphite-2: #5c5a52; /* teks sekunder */
+  --fade: #8b8778;       /* label teknis (kontras AA di kertas:4.6:1) */
+  --rule: #d8d3c4;       /* garis tipis */
+  --red: #c8452f;        /* aksen tunggal: dimensi, tag LIVE, penekanan */
+  --red-deep: #a5361f;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--graphite);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+/* Tipografi (alasan R-06): Inter = hierarki presisi grotesk;
+   JetBrains Mono = data teknis (tahun, URL, angka) — sesuai cara
+   kerja engineer spec-driven. Instrument Serif = sentuhan editorial
+   pada nama/kutipan agar gak kaku total. */
+.font-mono-tech { font-family: 'JetBrains Mono', ui-monospace, monospace; font-feature-settings: "tnum" 1; }
+.font-display { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
+
+/* Radius sengaja kecil & konsisten (R-11): lembar teknik = tegas */
+.r-1 { border-radius: 2px; }
+.r-2 { border-radius: 3px; }
+
+/* Garis dimensi — motif identitas utama */
+.dim-line { position: relative; height: 9px; border-left: 1.5px solid var(--graphite); border-right: 1.5px solid var(--graphite); }
+.dim-line::after {
+  content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 1px solid var(--graphite);
+}
+.dim-line-red { border-color: var(--red); }
+.dim-line-red::after { border-top-color: var(--red); }
+
+/* Bingkai lembar ganda (motif) */
+.sheet-frame { box-shadow: inset 0 0 0 1.5px var(--graphite); }
+.sheet-frame::after {
+  content: ""; position: absolute; inset: 5px; border: .5px solid var(--graphite); pointer-events: none;
+}
+
+/* Reveal sekali saat masuk viewport (MOTION dial2, R-19: pandu mata
+   turun lembar; sekali jalan, hormati reduced-motion) */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s cubic-bezier(.25,.9,.3,1); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Fokus keyboard terlihat (R-32) */
+a:focus-visible, button:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+
+::selection { background: var(--red); color: var(--paper); }
