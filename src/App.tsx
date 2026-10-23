@@ -93,13 +93,11 @@ const PRODUCTS = [
     desc: 'Manajemen bimbel: presensi kelas, kuis dengan penilaian otomatis, tagihan SPP QRIS.',
     stack: 'Go · React · QRIS',
   },
-]
-
-const EXTRA_LIVE = [
   {
     name: 'KiosAgen',
     url: 'kiosagen.web.id',
     href: 'https://kiosagen.web.id',
+    shot: '/shots/kiosagen.jpg',
     desc: 'POS dan marketplace untuk agrikultur, multi-tenant (SaaS).',
     stack: 'GoFiber · React · Docker',
   },
@@ -107,6 +105,7 @@ const EXTRA_LIVE = [
     name: 'Automation Report System',
     url: 'report.ars-appdev.web.id',
     href: 'https://report.ars-appdev.web.id',
+    shot: '/shots/ars.jpg',
     desc: 'Sistem laporan otomatis dengan pipeline deploy GitHub Actions ke GHCR.',
     stack: 'Docker · GitHub Actions',
   },
@@ -239,7 +238,7 @@ export default function App() {
                 href={p.href}
                 target="_blank"
                 rel="noreferrer"
-                className={`reveal group block border r-2 overflow-hidden transition-all hover:-translate-y-1 focus-visible:-translate-y-1 ${idx === 0 ? 'sm:col-span-2' : ''}`}
+                className={`reveal group block border r-2 overflow-hidden transition-all hover:-translate-y-1 focus-visible:-translate-y-1 ${idx === 0 || idx === PRODUCTS.length - 1 ? 'sm:col-span-2' : ''}`}
                 style={{ borderColor: 'var(--graphite)', background: 'var(--paper)', boxShadow: '3px 4px 0 rgba(43,43,43,.18)' }}
               >
                 <div className={`relative overflow-hidden border-b ${idx === 0 ? 'aspect-[16/7]' : 'aspect-[16/9]'}`} style={{ borderColor: 'var(--rule)', background: 'var(--paper-2)' }}>
@@ -261,27 +260,7 @@ export default function App() {
             ))}
           </div>
 
-          {/* Dua produk live tanpa tangkapan layar: baris teks (jujur, bukan kartu kosong) */}
-          <div className="mt-4 border r-2" style={{ borderColor: 'var(--graphite)' }}>
-            {EXTRA_LIVE.map((p, i) => (
-              <a
-                key={p.name}
-                href={p.href}
-                target="_blank"
-                rel="noreferrer"
-                className={`reveal group flex flex-wrap items-baseline gap-x-4 gap-y-1 p-4 transition-colors hover:bg-[var(--paper-2)] ${i === 0 ? 'border-b' : ''}`}
-                style={{ borderColor: 'var(--rule)' }}
-              >
-                <span className="font-bold text-sm sm:text-base">{p.name}</span>
-                <span className="font-mono-tech text-[11px]" style={{ color: 'var(--graphite-2)' }}>{p.url}</span>
-                <span className="font-mono-tech text-[10px] tracking-[.1em] uppercase" style={{ color: 'var(--fade)' }}>{p.stack}</span>
-                <span className="ml-auto flex items-center gap-2">
-                  <span className="font-mono-tech text-[10px] font-bold px-1.5 py-0.5 r-1" style={{ border: '1.5px solid var(--red)', color: 'var(--red)' }}>[LIVE]</span>
-                  <ArrowUpRight size={14} style={{ color: 'var(--red)' }} />
-                </span>
-              </a>
-            ))}
-          </div>
+
         </section>
 
         {/* ============ KOTAK PERALATAN ============ */}
