@@ -138,7 +138,7 @@ export default function App() {
                   <span className="dim-line dim-line-red flex-1" aria-hidden />
                   <span className="text-[10px] tracking-[.14em]" style={{ color: 'var(--fade)' }}>{x.span[lang]}</span>
                   <span className="dim-line dim-line-red flex-1" aria-hidden />
-                  <span>{x.to}</span>
+                  <span>{x.to[lang]}</span>
                 </div>
                 <h3 className="mt-3 text-lg sm:text-xl font-bold">{x.company}</h3>
                 <p className="font-mono-tech text-[11px] mt-1" style={{ color: 'var(--graphite-2)' }}>
@@ -191,7 +191,7 @@ export default function App() {
                   </div>
                   <p className="font-mono-tech text-[11px] mt-1" style={{ color: 'var(--graphite-2)' }}>{p.url}</p>
                   <p className="text-sm mt-2 leading-relaxed" style={{ color: 'var(--graphite-2)' }}>{p.desc[lang]}</p>
-                  <p className="font-mono-tech text-[10px] tracking-[.1em] uppercase mt-3" style={{ color: 'var(--fade)' }}>{p.stack}</p>
+                  <p className="font-mono-tech text-[10px] tracking-[.1em] uppercase mt-3" style={{ color: 'var(--fade)' }}>{typeof p.stack === 'string' ? p.stack : p.stack[lang]}</p>
                 </div>
               </a>
             ))}

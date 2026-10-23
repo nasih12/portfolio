@@ -5,7 +5,7 @@ export type Lang = 'id' | 'en'
 
 export interface ExpItem {
   from: string
-  to: string
+  to: Record<Lang, string>
   span: Record<Lang, string>
   company: string
   role: Record<Lang, string>
@@ -16,7 +16,7 @@ export interface ExpItem {
 export const EXPERIENCE: ExpItem[] = [
   {
     from: '2022',
-    to: '2025',
+    to: { id: '2025', en: '2025' },
     span: { id: '3 TAHUN', en: '3 YEARS' },
     company: 'PT. Indocyber Global Teknologi',
     role: {
@@ -44,7 +44,7 @@ export const EXPERIENCE: ExpItem[] = [
   },
   {
     from: '2025',
-    to: 'KINI',
+    to: { id: 'KINI', en: 'NOW' },
     span: { id: 'BERJALAN', en: 'CURRENT' },
     company: 'PT. Digital Tech Asia',
     role: {
@@ -78,7 +78,7 @@ export interface Product {
   href: string
   shot: string
   desc: Record<Lang, string>
-  stack: string
+  stack: string | Record<Lang, string>
 }
 
 export const PRODUCTS: Product[] = [
@@ -124,7 +124,7 @@ export const PRODUCTS: Product[] = [
       id: 'Catatan perawatan kendaraan: pengingat jatuh tempo berbasis KM dan waktu, riwayat biaya per unit.',
       en: 'Vehicle maintenance log: KM and time-based due reminders, per-unit cost history.',
     },
-    stack: 'Aplikasi web & mobile',
+    stack: { id: 'Aplikasi web & mobile', en: 'Web & mobile app' },
   },
   {
     name: 'KiosAgen',
